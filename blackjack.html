@@ -6,15 +6,32 @@
     <title>Blackjack</title>
     <style>
         .card{
-            height: 139x;
+            height: 139px;
             width: 103px;
         }
 
         .deck{
             width: 103px;
             margin: auto;
-            height: 191px;
+            height: 165px;
             border: 2px solid black;
+        }
+
+        .handArea{
+            position: absolute;
+            bottom: 30px;
+            left: 10%;
+            height: 151px;
+            width: 80%;
+            border: 2px solid black;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+        }
+
+        .faceDown{
+            background-image: url("cardback.jpg");
+
         }
     </style>
 </head>
@@ -23,10 +40,10 @@
     <button id="hit">Hit me!</button>
     <div>
         <div id = "deck" class = "deck">
-            <img class = "card" src = "cardback.jpg"> 
+            <img style = "height: 139px; width: 103px;"src = "cardback.jpg"> 
         </div>
-
     </div>
+    <div id = "playerHand" class = "handArea"></div>
 
     <script src = "blackjack.js"></script>
 </body>

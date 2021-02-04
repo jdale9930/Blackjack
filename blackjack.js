@@ -2,21 +2,37 @@
 let type = document.getElementById("type")
 let deckId = ""
 let deckCount = ""
-document.getElementById("button").addEventListener("click" , () =>{
+let gameState = false;
 
-    fetch(`https://deckofcardsapi.com/api/deck/new/shuffle/`)
+fetch(`https://deckofcardsapi.com/api/deck/new/shuffle/`)
     .then((response) => (response.json())
     .then((json) =>{
         deckId = json.deck_id;
         deckCount = json.remaining;
         console.log(json)
-        
-
     }))
 
+
+document.getElementById("button").addEventListener("click" , () =>{
+    let clear = document.getElementsByClassName("newCard");
+    console.log(clear)
+    for(let i = clear.length - 1; i >= 0; i--)
+    {
+        clear[i].remove();
+    }
+    fetch(`https://deckofcardsapi.com/api/deck/${deckId}/shuffle/`)
+    .then((response) => (response.json())
+    .then((json) =>{
+         deckCount = json.remaining;
+         console.log(deckCount);      
+     })
+     .then((response) =>{
+         deckSize()
+     }))
 })
 
 document.getElementById("hit").addEventListener("click" , draw)
+
 
 function draw() //owner, faceup
 {
@@ -27,17 +43,23 @@ function draw() //owner, faceup
     .then((json) =>{
             console.log(json)
             deckCount = json.remaining;
-            
-            document.getElementById("deck").style.height = `calc(139 + ${deckCount})px`
-            document.body.append(document.getElementById("deck"))
+            deckSize();
+            // let decksize = 139 + Math.floor(deckCount / 2);
+            // document.getElementById("deck").style.height = `${decksize}px`;
             let card = document.createElement("div");
+            card.classList.add("newCard")
             card.classList.add("card")
             card.innerHTML = `
             <img class = "card" src = "${json.cards[0].image}"></img>
             `
-            document.body.append(card)
+            document.getElementById(`playerHand`).append(card)
         }))
     }
 }
 
+function deckSize()
+{
+    let decksize = 139 + Math.floor(deckCount / 2);
+    document.getElementById("deck").style.height = `${decksize}px`;
+}
 
