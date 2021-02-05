@@ -14,12 +14,15 @@
             width: 103px;
             margin: auto;
             height: 165px;
-            border: 2px solid black;
+            border: 1px solid black;
+            border-radius: 5px;
+            position: absolute;
+            bottom: 45%;
+            left: calc(50% - 51px);
         }
 
         .handArea{
             position: absolute;
-            bottom: 30px;
             left: 10%;
             height: 151px;
             width: 80%;
@@ -31,20 +34,44 @@
 
         .faceDown{
             background-image: url("cardback.jpg");
+            background-size: 103px 139px;
 
+        }
+
+        .hidden{
+            visibility: hidden;
+        }
+
+        .turnButton{
+            position: absolute;
+            bottom: 200px;
+            height: 50px;
+            width: 75px;
+            text-align: center;
+        }
+
+        .result{
+            position: absolute;
+            bottom: 275px;
+            text-align: center;
+            left: calc(50% - 75px);
+            width: 150px;
         }
     </style>
 </head>
 <body>
-    <button id="button">New Deck</button>
-    <button id="hit">Hit me!</button>
+    <button id="button">New Game</button>
     <div>
         <div id = "deck" class = "deck">
             <img style = "height: 139px; width: 103px;"src = "cardback.jpg"> 
         </div>
     </div>
-    <div id = "playerHand" class = "handArea"></div>
+    <div id = "playerHand" class = "handArea" style = "bottom: 30px;"></div>
+    <div id = "cpuHand" class = "handArea" style = "top: 30px;"></div>
 
+    <button class = "turnButton hidden" id="hit" style = "left: 38%;">Hit me!</button>
+    <button class = "turnButton hidden" id="hold" style = "right: 38%">Hold</button>
+    <div id = "result" class = "result"></div>
     <script src = "blackjack.js"></script>
 </body>
 </html>
