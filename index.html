@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack</title>
+    <style>
+        .card{
+            height: 139px;
+            width: 103px;
+        }
+
+        .deck{
+            width: 103px;
+            margin: auto;
+            height: 165px;
+            border: 1px solid black;
+            border-radius: 5px;
+            position: absolute;
+            bottom: 45%;
+            left: calc(50% - 51px);
+        }
+
+        .handArea{
+            position: absolute;
+            left: 10%;
+            height: 151px;
+            width: 80%;
+            border: 2px solid black;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+        }
+
+        .faceDown{
+            background-image: url("cardback.jpg");
+            background-size: 103px 139px;
+
+        }
+
+        .hidden{
+            visibility: hidden;
+        }
+
+        .turnButton{
+            position: absolute;
+            bottom: 200px;
+            height: 50px;
+            width: 75px;
+            text-align: center;
+        }
+
+        .result{
+            position: absolute;
+            bottom: 275px;
+            text-align: center;
+            left: calc(50% - 75px);
+            width: 150px;
+        }
+
+        .cpuChoice{
+            position: absolute;
+            top: 200px;
+            text-align: center;
+            width: 200px;
+            left: calc(50% - 100px);
+        }
+    </style>
+</head>
+<body>
+    <button id="button">New Game</button>
+    <div>
+        <div id = "deck" class = "deck">
+            <img style = "height: 139px; width: 103px;"src = "cardback.jpg"> 
+        </div>
+    </div>
+    <div id = "playerHand" class = "handArea" style = "bottom: 30px;"></div>
+    <div id = "cpuHand" class = "handArea" style = "top: 30px;"></div>
+
+    <button class = "turnButton hidden" id="hit" style = "left: 38%;">Hit me!</button>
+    <button class = "turnButton hidden" id="hold" style = "right: 38%">Hold</button>
+    <div id = "result" class = "result"></div>
+    <div id = "cpuChoice" class = "cpuChoice"></div>
+    <script src = "blackjack.js"></script>
+</body>
+</html>
